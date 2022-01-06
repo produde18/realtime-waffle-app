@@ -20,7 +20,7 @@ export function initAdmin(socket) {
     })
 
     function renderItems(items) {
-        let parsedItems = Object.values(items)
+        let parsedItems = Object.values(items) //returns the array of values
         return parsedItems.map((menuItem) => {
             return `
                 <p>${ menuItem.item.name } - ${ menuItem.qty } pcs </p>
@@ -29,8 +29,9 @@ export function initAdmin(socket) {
       }
 
     function generateMarkup(orders) {
-        return orders.map(order => {
-            return `
+        return orders.map(order => {  //map is a function and it is called upon array
+            //return array of tr tag
+            return ` 
                 <tr>
                 <td class="border px-4 py-2 text-green-900">
                     <p>${ order._id }</p>
@@ -77,7 +78,7 @@ export function initAdmin(socket) {
                 </td>
             </tr>
         `
-        }).join('')
+        }).join('')  //array of tr is getting joined in one string 
     }
     // Socket
     socket.on('orderPlaced', (order) => {

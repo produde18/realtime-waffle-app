@@ -44,10 +44,10 @@ if(alertMsg) {
 
 
 // Change order status
-let statuses = document.querySelectorAll('.status_line')
-let hiddenInput = document.querySelector('#hiddenInput')
+let statuses = document.querySelectorAll('.status_line')  //to get multiple statuses in an array
+let hiddenInput = document.querySelector('#hiddenInput')  //If hidden input is there , then just give the value back
 let order = hiddenInput ? hiddenInput.value : null
-order = JSON.parse(order)
+order = JSON.parse(order)  //converts into json object
 let time = document.createElement('small')
 
 function updateStatus(order) {
@@ -57,15 +57,15 @@ function updateStatus(order) {
     })
     let stepCompleted = true;
     statuses.forEach((status) => {
-       let dataProp = status.dataset.status
+       let dataProp = status.dataset.status  //dataset gives us all the attributes of status
        if(stepCompleted) {
-            status.classList.add('step-completed')
+            status.classList.add('step-completed')  //adds step-completed in the class of the  that tag
        }
        if(dataProp === order.status) {
             stepCompleted = false
             time.innerText = moment(order.updatedAt).format('hh:mm A')
             status.appendChild(time)
-           if(status.nextElementSibling) {
+           if(status.nextElementSibling) {  //checks for the next element
             status.nextElementSibling.classList.add('current')
            }
        }
@@ -82,9 +82,9 @@ let socket = io()
 
 // Join
 if(order) {
-    socket.emit('join', `order_${order._id}`)
+    socket.emit('join', `order_${order._id}`)  //take order id and join the room of name orderid
 }
-let adminAreaPath = window.location.pathname
+let adminAreaPath = window.location.pathname  //to get the current url
 if(adminAreaPath.includes('admin')) {
     initAdmin(socket)
     socket.emit('join', 'adminRoom')
