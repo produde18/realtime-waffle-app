@@ -79,20 +79,20 @@ const server = app.listen(PORT , () => {
             console.log(`Listening on port ${PORT}`)
         })
 
-// // Socket
+// Socket
 
-// const io = require('socket.io')(server)
-// io.on('connection', (socket) => {
-//       // Join
-//       socket.on('join', (orderId) => {
-//         socket.join(orderId)
-//       })
-// })
+const io = require('socket.io')(server)
+io.on('connection', (socket) => {
+      // Join
+      socket.on('join', (orderId) => {
+        socket.join(orderId)   //join the room through orderId
+      })
+})
 
-// eventEmitter.on('orderUpdated', (data) => {
-//     io.to(`order_${data.id}`).emit('orderUpdated', data)
-// })
+eventEmitter.on('orderUpdated', (data) => {
+    io.to(`order_${data.id}`).emit('orderUpdated', data)
+})
 
-// eventEmitter.on('orderPlaced', (data) => {
-//     io.to('adminRoom').emit('orderPlaced', data)
-// })
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
+})

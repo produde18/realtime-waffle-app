@@ -56,7 +56,7 @@ function orderController () {
         async index(req, res) {
             const orders = await Order.find({ customerId: req.user._id },
                 null,
-                { sort: { 'createdAt': -1 } } )
+                { sort: { 'createdAt': -1 } } )   //sort by latest time 
             res.header('Cache-Control', 'no-store')
             res.render('customers/orders', { orders: orders, moment: moment })
         },
@@ -64,7 +64,7 @@ function orderController () {
             const order = await Order.findById(req.params.id)
             // Authorize user
             if(req.user._id.toString() === order.customerId.toString()) {
-                return res.render('customers/singleOrder', { order })
+                return res.render('customers/singleOrder', { order: order })  //send order data that is fetched from database
             }
             return  res.redirect('/')
         }
