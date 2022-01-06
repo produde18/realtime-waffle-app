@@ -27,7 +27,7 @@
                 <% if(user) { %>
                 <li class="ml-6">
                     <form id="logout" action="/logout" method="POST">
-                        <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+                        <a class="text-xl font-bold" onclick="document.getElementById('logout').submit()" href="#">Logout</a>
                     </form>
                 </li>
                 <% } else { %>
@@ -45,7 +45,8 @@
     </nav>
     <%- body %>
     <footer></footer>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- sharing the library to home page  -->
+    <script src="/socket.io/socket.io.js"></script>  
     <script src="/js/app.js"></script>
 </body>
 
