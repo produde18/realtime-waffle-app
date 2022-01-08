@@ -3,14 +3,14 @@
         <div class="w-1/2">
             <h6 class="text-lg"><em>Are you hungry?</em></h6>
             <h1 class="text-3xl md:text-6xl font-bold">Don't wait !</h1>
-            <button class="px-8 py-4 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button>
+            <button class="px-8 py-4 rounded-full text-white font-bold mt-4 btn-primary" onClick="document.getElementById('menu').scrollIntoView();">Order Now</button>
         </div>
         <div class="w-5/6">
             <img src="https://thebelgianwaffle.co/wp-content/uploads/2019/12/6.jpg" alt="">
         </div>
     </div>
 </section>
-<section class="menu container mx-auto py-8 px-6">
+<section class="menu container mx-auto py-8 px-6" id="menu">
     <h1 class="text-xl font-bold mb-8">All Waffles</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
         <!-- ejs template being used with for each loop to repeat the data -->
